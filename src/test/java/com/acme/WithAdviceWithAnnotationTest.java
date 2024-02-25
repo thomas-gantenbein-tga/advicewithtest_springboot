@@ -8,6 +8,7 @@ import org.apache.camel.test.spring.junit5.UseAdviceWith;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
 @SpringBootTest
 @CamelSpringBootTest
@@ -21,6 +22,7 @@ public class WithAdviceWithAnnotationTest {
 	private ProducerTemplate producerTemplate;
 
 	@Test
+	@DirtiesContext
 	public void givenContextStartedAfterAdvice_fail() throws Exception {
 		AdviceWith.adviceWith(camelContext, "route1",
 				r -> {
